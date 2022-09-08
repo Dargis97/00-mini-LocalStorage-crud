@@ -1,0 +1,82 @@
+.form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    
+    &.row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    label {
+        font-size: 22px;
+        padding: 5px 0;
+        color: black;
+        font-weight: 100;  
+   
+    }
+    
+    .margin {
+        margin-bottom: 40px;
+    }     
+    input[type=text] {
+        font-size: 18px;
+        border: none;
+        font-weight: 400;
+        outline: none;
+        padding: 5px;
+        background-color: lightcoral;
+        color: white;
+        width: calc(100% - 10px);
+        letter-spacing: 0.5px;
+    }
+    input[type=number] {
+       
+        font-size: 18px;
+        border: none;
+        font-weight: 400;
+        outline: none;
+        padding: 5px;
+        background-color: lightcoral;
+        color: white;
+        width: calc(100% - 10px);
+        letter-spacing: 0.5px;
+    }
+    .c {
+        margin-left: 10px;
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+       background-color: lightcoral;
+       
+    }
+    .s {
+        margin-left: 22px;
+        width: 40px;
+        height: 40px;
+        background-color: lightcoral;
+     }
+    .r {
+        margin-block-start: 5px;
+        margin-left: 10px;
+        width: 35px;
+        height: 35px;
+        background-color: lightcoral;
+        transform:rotate(45deg);
+     }
+    
+    input[type=checkbox] {
+       display: none;
+        & + label {
+            cursor: pointer;    
+            user-select: none;  
+            }          
+       
+    }
+  
+}
+
