@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/00-mini-LocalStorage-crud/static/css/main.1c91b241.css",
+    "main.js": "/00-mini-LocalStorage-crud/static/js/main.a8a2745a.js",
+    "index.html": "/00-mini-LocalStorage-crud/index.html",
+    "main.1c91b241.css.map": "/00-mini-LocalStorage-crud/static/css/main.1c91b241.css.map",
+    "main.a8a2745a.js.map": "/00-mini-LocalStorage-crud/static/js/main.a8a2745a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c91b241.css",
+    "static/js/main.a8a2745a.js"
+  ]
+}
