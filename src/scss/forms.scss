@@ -6,7 +6,7 @@
     flex-direction: column;
     padding: 10px;
     box-sizing: border-box;
-    
+
     &.row {
         flex-direction: row;
         justify-content: space-between;
@@ -16,14 +16,13 @@
         font-size: 22px;
         padding: 5px 0;
         color: black;
-        font-weight: 100;  
-   
+        font-weight: 100;
     }
-    
+
     .margin {
         margin-bottom: 40px;
-    }     
-    input[type=text] {
+    }
+    input[type="text"] {
         font-size: 18px;
         border: none;
         font-weight: 400;
@@ -34,8 +33,7 @@
         width: calc(100% - 10px);
         letter-spacing: 0.5px;
     }
-    input[type=number] {
-       
+    input[type="number"] {
         font-size: 18px;
         border: none;
         font-weight: 400;
@@ -48,35 +46,43 @@
     }
     .c {
         margin-left: 10px;
-       width: 40px;
-       height: 40px;
-       border-radius: 50%;
-       background-color: lightcoral;
-       
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: lightcoral;
     }
     .s {
         margin-left: 22px;
         width: 40px;
         height: 40px;
         background-color: lightcoral;
-     }
+    }
     .r {
         margin-block-start: 5px;
         margin-left: 10px;
         width: 35px;
         height: 35px;
         background-color: lightcoral;
-        transform:rotate(45deg);
-     }
-    
-    input[type=checkbox] {
-       display: none;
-        & + label {
-            cursor: pointer;    
-            user-select: none;  
-            }          
-       
+        transform: rotate(45deg);
     }
-  
-}
 
+    input[type="checkbox"] {
+        display: none;
+        & + label {
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+    .cb-line {
+        span {
+            margin: 0 5px 0 0;
+            label {
+                padding: 3px 5px;
+            }
+            [type="checkbox"]:checked + label {
+                color: crimson;
+                border: 2px solid rgb(22, 209, 241);
+            }
+        }
+    }
+}

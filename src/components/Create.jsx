@@ -1,35 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DataContext from './DataContext';
-
-const radioData = { A: false, B: false, C: false };
 
 function Create() {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
-  const [radio, setRadio] = useState(radioData);
+  const [animal, setAnimal] = useState(0);
 
-  const { setCreateData } = useContext(DataContext);
-
-  useEffect(() => {}, [radio]);
-
-  const radioChange = (e) => {
-    const v = e.target.value;
-    const r = {};
-    for (const a in radioData) {
-      r[a] = a === v ? true : false;
-    }
-    setRadio(r);
-  };
+  const { setCreateData, listOfAnimals, makeMsg } = useContext(DataContext);
 
   const add = () => {
+    if ('' === name) {
+      makeMsg('You need to insert name before adding to the list!', 'alert');
+      return;
+    }
+    if ('' === weight || 0 === weight) {
+      makeMsg('You need to insert weight before adding to the list!', 'alert');
+      return;
+    }
+    if (0 === animal) {
+      makeMsg('You need to choose animal before moving forward!', 'alert');
+      return;
+    }
     setCreateData({
       name,
       weight,
-      radio: radio.A ? 'Sheep' : radio.B ? 'Antelope' : radio.C ? 'Duck' : null,
+      animal,
     });
     setName('');
     setWeight('');
-    setRadio(radioData);
+    setAnimal(0);
   };
 
   return (
@@ -55,49 +54,20 @@ function Create() {
         </div>
 
         <h2>Choose animal</h2>
-        <div className='form row'>
-          <div>
-            <input
-              type='checkbox'
-              value='A'
-              id='_1'
-              onChange={radioChange}
-              checked={radio.A}
-            />
-            <label
-              htmlFor='_1'
-              style={{
-                color: radio.A ? 'crimson' : null,
-              }}
-            >
-              Sheep
-            </label>
-          </div>
-
-          <div>
-            <input
-              type='checkbox'
-              value='B'
-              id='_2'
-              onChange={radioChange}
-              checked={radio.B}
-            />
-            <label htmlFor='_2' style={{ color: radio.B ? 'crimson' : null }}>
-              Antelope
-            </label>
-          </div>
-
-          <div>
-            <input
-              type='checkbox'
-              value='C'
-              id='_3'
-              onChange={radioChange}
-              checked={radio.C}
-            />
-            <label htmlFor='_3' style={{ color: radio.C ? 'crimson' : null }}>
-              Duck
-            </label>
+        <div className='form'>
+          <label>Texture</label>
+          <div className='cb-line'>
+            {listOfAnimals.map((t) => (
+              <span key={t.id}>
+                <input
+                  id={'c_' + t.id}
+                  type='checkbox'
+                  checked={t.id === animal}
+                  onChange={() => setAnimal(t.id)}
+                ></input>
+                <label htmlFor={'c_' + t.id}>{t.title}</label>
+              </span>
+            ))}
           </div>
         </div>
         <div className='form'>

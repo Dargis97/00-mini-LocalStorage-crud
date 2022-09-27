@@ -3,10 +3,18 @@ import './App.scss';
 import Create from './components/Create';
 import DataContext from './components/DataContext';
 import Edit from './components/Edit';
+
 import List from './components/List';
+import Msg from './components/Msg';
 import { create, read, destroy, update } from './functions/localStorage';
+import rand from './functions/rand';
 
 const key = 'things_shelf';
+const listOfAnimals = [
+  { id: 1, title: 'Sheep' },
+  { id: 2, title: 'Antelope' },
+  { id: 3, title: 'Ducks' },
+];
 
 function App() {
   const [things, setThings] = useState(null);
@@ -15,6 +23,8 @@ function App() {
   const [deleteData, setDeleteData] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [editData, setEditData] = useState(null);
+
+  const [msgs, setMsgs] = useState([]);
 
   //READ
   useEffect(() => {
@@ -28,6 +38,7 @@ function App() {
     }
     create(key, createData);
     setLastUpdate(Date.now());
+    makeMsg('New animal was added!', 'success');
   }, [createData]);
 
   //DELETE
@@ -37,6 +48,7 @@ function App() {
     }
     destroy(key, deleteData.id);
     setLastUpdate(Date.now());
+    makeMsg('The animal was deleted!', 'info');
   }, [deleteData]);
 
   //EDIT
@@ -48,6 +60,14 @@ function App() {
     setLastUpdate(Date.now());
   }, [editData]);
 
+  const makeMsg = (text, type) => {
+    const id = rand(1000000, 9999999);
+    setMsgs((m) => [...m, { text, id, type }]);
+    setTimeout(() => {
+      setMsgs((m) => m.filter((ms) => ms.id !== id));
+    }, 4000);
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -57,6 +77,9 @@ function App() {
         modalData,
         setModalData,
         setEditData,
+        listOfAnimals,
+        msgs,
+        makeMsg,
       }}
     >
       <div className='container'>
@@ -69,6 +92,8 @@ function App() {
           </div>
         </div>
       </div>
+      <Edit />
+      <Msg />
     </DataContext.Provider>
   );
 }

@@ -1,0 +1,28 @@
+.messages {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .msg {
+        width: 30%;
+        background-color: white;
+        border-radius: 8px;
+        margin: 10px;
+        font-size: 16px;
+        color: darkgrey;
+        padding: 25px;
+        &.success {
+            background-color: lightgreen;
+        }
+        &.info {
+            background-color: lightblue;
+        }
+        &.alert {
+            background-color: lightcoral;
+        }
+    }
+}
